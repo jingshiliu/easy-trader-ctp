@@ -6,21 +6,24 @@ body{
     position: absolute;
     width: 60%;
     height: 100%;
+    left: 40%;
     top: 0px;
     background: #03045E;
 }
 
 #signUp{
     position: relative;
-    top:50%;
+    top:40%;
     justify-content: center;
     text-align: center;
+    margin-left: 20%;
 }
 
 .signUpHeader{
     color: white;
     text-align: center;
     justify-content: center;
+    margin-bottom: 3%;
 }
 
 #signupForm{
@@ -29,14 +32,27 @@ body{
 
 .inputContainer i{
     position: absolute;
-    font-size: 100%;
-    padding: 6px 8px;
+    font-size: 1.5em;
+    padding: 10px 15px;
 }
 
 .inputField{
-    height: 2em;
+    padding-left: 50px;
+    margin-bottom: 2em;
+    height: 3em;
     border-radius: 1em;
     border: none;
+    width: 35%;
+    box-sizing: border-box;
+}
+
+#signUpButton{
+    color: white;
+    width:  35%;
+    height: 3em;
+    border-radius: 1em;
+    background-color: #0096C7;
+    font-size: large;
 }
 
 
