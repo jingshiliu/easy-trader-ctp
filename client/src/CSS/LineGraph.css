@@ -1,0 +1,8 @@
+.LineGraph{
+
+}
+
+.line-graph__container{
+    position: relative;
+    height: 400px;
+}

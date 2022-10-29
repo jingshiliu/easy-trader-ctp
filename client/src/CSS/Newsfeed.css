@@ -1,0 +1,17 @@
+.Newsfeed{
+    flex: 0.7;
+    color: white;
+    padding-top: 40px;
+}
+
+.newsfeed__portfolio-value{
+    font-size: larger;
+    text-align: left;
+}
+
+.newsfeed__portfolio-value p{
+    padding-top: 10px;
+}
+
+
+

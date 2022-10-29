@@ -1,10 +1,114 @@
+import './CSS/App.css'
+import Header from './components/Header'
+import Newsfeed from "./components/Newsfeed";
+import Stats from "./components/Stats";
+import {useEffect, useState} from "react";
+
+
+const defaultProfileStocks = [
+    {
+        symbol: 'GME',
+        quantity: 3,
+    },
+    {
+        symbol: 'SNAP',
+        quantity: 10,
+    },
+    {
+        symbol: 'AAPL',
+        quantity: 21,
+    },
+    {
+        symbol: 'TWTR',
+        quantity: 13,
+    },
+    {
+        symbol: 'TSLA',
+        quantity: 31,
+    },
+    {
+        symbol: 'NFLX',
+        quantity: 22,
+    },
+    {
+        symbol: 'UBER',
+        quantity: 103,
+    },
+]
+
+const finnhub = require('finnhub');
+const api_key = finnhub.ApiClient.instance.authentications['api_key'];
+api_key.apiKey = "cdaaobqad3i97v8jfvagcdaaobqad3i97v8jfvb0"
+const finnhubClient = new finnhub.DefaultApi()
+
+const HOURS = 24
+const DAYS = 5
+const GRAPH_LENGTH = 30
+
+function getTimestampInSeconds () {
+    return Math.floor(Date.now() / 1000)
+}
+
 
 function App() {
-  return (
-    <div className="App">
+    const [profileStocks, setProfileStocks] = useState([])
+    const [stockCandles, setStockCandles] = useState([])
 
-    </div>
-  );
+    function calculateStockCandles(){
+        let candles = [] // list of {symbol, candle, quantity}
+        let until = getTimestampInSeconds()
+        let from = until - DAYS * HOURS * 3600
+
+        for (let i = 0; i < profileStocks.length; i++) {
+            console.log(i)
+            // fetch candle data of each stock
+            finnhubClient.stockCandles(profileStocks[i].symbol, '60', from, until, (err, data)=>{
+                if(err)
+                    throw err;
+                candles.push(
+                    {
+                        symbol: profileStocks[i].symbol,
+                        candle: data['c'].slice(-GRAPH_LENGTH, data['c'].length),
+                        quantity: profileStocks[i].quantity
+                    }
+                )
+                if(candles.length === profileStocks.length){
+                    setStockCandles(candles)
+                }
+            })
+        }
+    }
+
+    console.log(stockCandles)
+
+    useEffect( ()=>{
+        console.log('useEffect')
+        // await fetch profile data
+        // set stockCandles
+        // fetch profile data: list of stocks and quantity
+        setProfileStocks(defaultProfileStocks)
+        // establish websocket connection with api, and pass in stock tickers(symbol)
+        // pass in data to child
+    }, [])
+
+    useEffect(()=>{
+        calculateStockCandles()
+    }, [profileStocks])
+
+    return (
+        <div className="App">
+            <div className='app__header'>
+                <Header />
+            </div>
+
+            <div className='app__body'>
+                <div className="app__body__container">
+                    <Newsfeed stockCandles={stockCandles} />
+                    <Stats stockCandles={stockCandles} />
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default App;

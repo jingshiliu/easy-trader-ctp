@@ -1,0 +1,15 @@
+.Stats{
+    flex: 0.3;
+    color: white;
+}
+
+.stats__container{
+    border: 1px solid transparent;
+    border-radius: 0.5em;
+    height: fit-content;
+    background-color: #fff1;
+}
+
+.stats__header{
+    font-size: larger;
+}

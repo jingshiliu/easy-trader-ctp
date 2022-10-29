@@ -1,0 +1,28 @@
+.StatsCard{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+    margin: 10px 0;
+    color: white;
+}
+
+.StatsCard:hover{
+    background-color: #000f;
+}
+
+.StatsCard:link{
+    text-decoration: none;
+}
+
+.StatsCard .LineGraph{
+    justify-self: start;
+
+}
+
+.StatsCard .LineGraph .line-graph__container{
+    width: 150px;
+    height: 100px;
+}
