@@ -10,18 +10,19 @@ function Newsfeed({stockCandles}) {
         if(stockCandles.length === 0)
             return
         let tempTotalCandle = []
-        let tempTotal = 0
         let curCandleVal;
+        // Iterate through timestamps
+        // in each timestamp, calculate the total price of that time, and add to totalCandle list
         for (let i = 0; i < stockCandles[0].candle.length; i++) {
             curCandleVal = 0
             for (let j = 0; j < stockCandles.length; j++) {
                 curCandleVal += stockCandles[j].candle[i] * stockCandles[j].quantity
             }
             tempTotalCandle.push(curCandleVal)
-            tempTotal += curCandleVal
         }
         setTotalCandle(tempTotalCandle)
-        setTotalValue(Math.round(tempTotal))
+        setTotalValue(tempTotalCandle[tempTotalCandle.length - 1]) // last one is current price
+        console.log(tempTotalCandle)
     }, [stockCandles])
 
     return (
