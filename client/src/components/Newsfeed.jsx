@@ -37,6 +37,10 @@ function Newsfeed({stockCandles}) {
                     <div className="newsfeed__chart">
                         <LineGraph yAxes={totalCandle}/>
                     </div>
+
+                    <div className="newsfeed__buying-power">
+                        <BuyingPower />
+                    </div>
                 </div>
             </div>
         </section>
