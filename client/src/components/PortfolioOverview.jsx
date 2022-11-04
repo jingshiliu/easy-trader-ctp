@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import '../CSS/Newsfeed.css'
 import LineGraph from "./LineGraph";
+import BuyingPower from "./BuyingPower";
 
-function Newsfeed({stockCandles}) {
+function PortfolioOverview({stockCandles}) {
     const [totalValue, setTotalValue] = useState(0)
     const [totalCandle, setTotalCandle] = useState([])
 
@@ -21,7 +22,7 @@ function Newsfeed({stockCandles}) {
             tempTotalCandle.push(curCandleVal)
         }
         setTotalCandle(tempTotalCandle)
-        setTotalValue(tempTotalCandle[tempTotalCandle.length - 1]) // last one is current price
+        setTotalValue(Math.round(tempTotalCandle[tempTotalCandle.length - 1])) // last one is current price
         console.log(tempTotalCandle)
     }, [stockCandles])
 
@@ -47,4 +48,4 @@ function Newsfeed({stockCandles}) {
     );
 }
 
-export default Newsfeed;
+export default PortfolioOverview;
