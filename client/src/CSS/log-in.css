@@ -11,7 +11,7 @@ body{
     background: #03045E;
 }
 
-#signUp{
+#logIn{
     position: relative;
     top:40%;
     justify-content: center;
@@ -19,14 +19,14 @@ body{
     margin-left: 20%;
 }
 
-.signUpHeader{
+.LogInHeader{
     color: white;
     text-align: center;
     justify-content: center;
     margin-bottom: 3%;
 }
 
-#signupForm{
+#LogInForm{
     display: block;
 }
 

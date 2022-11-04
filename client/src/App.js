@@ -98,9 +98,9 @@ function App() {
 
     return (
         <div className="App">
-            <div className='app__header'>
+            {/* <div className='app__header'>
                 <Header />
-            </div>
+            </div> */}
 
             <div className='app__body'>
                 <div className="app__body__container">
