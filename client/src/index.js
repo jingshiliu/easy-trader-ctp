@@ -1,11 +1,12 @@
 import React from 'react';
 import App from './App';
 import ReactDOM from "react-dom";
-import { BrowserRouter, Routes, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NoPage from './pages/NoPage';
 import LogIn from './pages/LogIn';
 import SignUp from './pages/SignUp';
 import Layout from './pages/Layout';
+
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(

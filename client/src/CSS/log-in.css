@@ -36,6 +36,12 @@ body{
     padding: 10px 15px;
 }
 
+.icons{
+    position: absolute;
+    font-size: 1.5em;
+    padding: 10px 15px;
+}
+
 .inputField{
     padding-left: 50px;
     margin-bottom: 2em;
@@ -53,6 +59,10 @@ body{
     border-radius: 1em;
     background-color: #0096C7;
     font-size: large;
+}
+
+#logInButton:hover{
+    background-color: #7cb2c5;
 }
 
 

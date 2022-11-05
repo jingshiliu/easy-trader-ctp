@@ -1,7 +1,8 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React from 'react'
 import '../CSS/log-in.css'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import { faLock } from '@fortawesome/free-solid-svg-icons'
 function LogIn(){
     return(
         <div>
@@ -10,18 +11,18 @@ function LogIn(){
                     <h1 class="LogInHeader">Log in</h1>
                     <form id="LogInForm" action="">
                         <div class="inputContainer">
-                            <FontAwesomeIcon icon="envelope" />
-                            {/* <i class="fa-solid fa-envelope"></i> */}
+                            <FontAwesomeIcon icon={faEnvelope} className="icons"/>                        
                             <label for="user-email"></label>
                             <input class="inputField" type="text" id="user-email" name="user-email"/>
                         </div>
                         <div class="inputContainer">
-                            <FontAwesomeIcon icon="lock" /> 
-                            {/* <i class="fa-solid fa-lock"></i> */}
+                            <FontAwesomeIcon icon={faLock} className="icons" />
                             <label for="user-password"></label>
                             <input class="inputField" type="password" id="user-password" name="user-password"/>
                         </div>
-                        <input type="submit" value="Log In" id="logInButton"/>
+                        <div className="buttonContainer">
+                            <button type="submit" id="logInButton">Log In</button>
+                        </div>
                     </form>
                 </div>
         </div>
