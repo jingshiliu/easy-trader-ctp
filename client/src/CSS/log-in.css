@@ -11,7 +11,7 @@ body{
     background: #03045E;
 }
 
-#signUp{
+#logIn{
     position: relative;
     top:40%;
     justify-content: center;
@@ -19,18 +19,24 @@ body{
     margin-left: 20%;
 }
 
-.signUpHeader{
+.LogInHeader{
     color: white;
     text-align: center;
     justify-content: center;
     margin-bottom: 3%;
 }
 
-#signupForm{
+#LogInForm{
     display: block;
 }
 
 .inputContainer i{
+    position: absolute;
+    font-size: 1.5em;
+    padding: 10px 15px;
+}
+
+.icons{
     position: absolute;
     font-size: 1.5em;
     padding: 10px 15px;
@@ -53,6 +59,10 @@ body{
     border-radius: 1em;
     background-color: #0096C7;
     font-size: large;
+}
+
+#logInButton:hover{
+    background-color: #7cb2c5;
 }
 
 

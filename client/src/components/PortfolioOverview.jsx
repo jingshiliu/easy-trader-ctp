@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import '../CSS/PortfolioOverview.css'
 import LineGraph from "./LineGraph";
+import BuyingPower from './BuyingPower';
 
 function PortfolioOverview({stockCandles}) {
     const [totalValue, setTotalValue] = useState(0)
