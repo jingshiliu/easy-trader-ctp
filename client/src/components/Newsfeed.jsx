@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import '../CSS/Newsfeed.css'
 import LineGraph from "./LineGraph";
+import BuyingPower from './BuyingPower';
 
 function Newsfeed({stockCandles}) {
     const [totalValue, setTotalValue] = useState(0)
@@ -38,9 +39,9 @@ function Newsfeed({stockCandles}) {
                         <LineGraph yAxes={totalCandle}/>
                     </div>
 
-                    {/* <div className="newsfeed__buying-power">
+                    <div className="newsfeed__buying-power">
                         <BuyingPower />
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </section>
