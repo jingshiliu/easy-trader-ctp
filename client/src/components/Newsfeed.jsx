@@ -38,9 +38,9 @@ function Newsfeed({stockCandles}) {
                         <LineGraph yAxes={totalCandle}/>
                     </div>
 
-                    <div className="newsfeed__buying-power">
+                    {/* <div className="newsfeed__buying-power">
                         <BuyingPower />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </section>
