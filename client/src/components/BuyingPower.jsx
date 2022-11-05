@@ -11,9 +11,11 @@ function BuyingPower({buyingPower}) {
             <form className='BuyingPower__add-buying-power'>
                 <div>
                     <span>Add Power! </span>
-                    <input type="text" placeholder='Enter amount and pay nothing'/>
+                    <div className="BuyingPower__input-container">
+                        <input type="text" placeholder='Enter amount'/>
+                    </div>
                 </div>
-                <button onClick={(e)=>{
+                <div className='button' onClick={(e)=>{
                     e.preventDefault()
                     // get
                     // Send an api request to backend to add money
@@ -21,7 +23,7 @@ function BuyingPower({buyingPower}) {
                     // put(add) amount
                 }}>
                     Confirm
-                </button>
+                </div>
             </form>)
     }
 
