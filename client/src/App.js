@@ -1,7 +1,9 @@
 import './CSS/App.css'
-import Newsfeed from "./components/Newsfeed";
+import Header from './components/Header'
+import PortfolioOverview from "./components/PortfolioOverview";
 import Stats from "./components/Stats";
 import {useEffect, useState} from "react";
+import MainAppContent from "./components/MainAppContent";
 
 
 const defaultProfileStocks = [
@@ -97,12 +99,21 @@ function App() {
 
     return (
         <div className="App">
+            <div className='app__header'>
+                <Header />
+            </div>
 
             <div className='app__body'>
                 <div className="app__body__container">
-                    <Newsfeed stockCandles={stockCandles} />
-                    <Stats stockCandles={stockCandles} />
+                    <div className="app__body__main-chart__container">
+                        <PortfolioOverview stockCandles={stockCandles} />
+                    </div>
+
+                    <MainAppContent stockCandles={stockCandles}/>
+
                 </div>
+
+
             </div>
         </div>
     );

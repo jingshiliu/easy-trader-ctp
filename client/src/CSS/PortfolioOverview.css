@@ -1,15 +1,14 @@
-.Newsfeed{
-    flex: 0.7;
+.PortfolioOverview{
     color: white;
     padding-top: 40px;
 }
 
-.newsfeed__portfolio-value{
+.PortfolioOverview__portfolio-value{
     font-size: larger;
     text-align: left;
 }
 
-.newsfeed__portfolio-value p{
+.PortfolioOverview__portfolio-value p{
     padding-top: 10px;
 }
 
