@@ -1,0 +1,27 @@
+.Options{
+    color: white;
+    margin: 1em 0;
+    width: 100%;
+}
+
+.Options__container{
+    padding: 1em;
+    border-radius: 1em;
+    background-color: #fff1;
+}
+
+.Options__header{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+.Options__container:hover{
+    background-color: #fff2;
+    cursor: pointer;
+}
+
+.Options__header span:last-child{
+    position: relative;
+    right: 20%;
+}

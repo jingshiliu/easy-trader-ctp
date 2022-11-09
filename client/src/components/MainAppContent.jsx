@@ -2,6 +2,7 @@ import '../CSS/MainAppContent.css'
 import React from 'react';
 import Stats from "./Stats";
 import BuyingPower from "./BuyingPower";
+import Options from "./Options";
 
 function MainAppContent({stockCandles}) {
     return (
@@ -12,7 +13,7 @@ function MainAppContent({stockCandles}) {
             </div>
 
             <div className="MainBodyContent__column">
-                {/*<Options />*/}
+                <Options />
                 {/*<TrendingStocks />*/}
             </div>
 

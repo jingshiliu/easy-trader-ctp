@@ -28,7 +28,7 @@ function BuyingPower({buyingPower}) {
     }
 
     return (
-        <section className='BuyingPower'>
+        <section className='Options'>
             <div className="BuyingPower__container">
                 <div className="BuyingPower__header"
                     onClick={()=>{
