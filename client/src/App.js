@@ -1,7 +1,6 @@
 import './CSS/App.css'
 import Header from './components/Header'
 import PortfolioOverview from "./components/PortfolioOverview";
-import Stats from "./components/Stats";
 import {useEffect, useState} from "react";
 import MainAppContent from "./components/MainAppContent";
 
@@ -61,7 +60,6 @@ function App() {
         let from = until - DAYS * HOURS * 3600
 
         for (let i = 0; i < profileStocks.length; i++) {
-            console.log(i)
             // fetch candle data of each stock
             finnhubClient.stockCandles(profileStocks[i].symbol, 'D', from, until, (err, data)=>{
                 if(err)
@@ -83,7 +81,6 @@ function App() {
     console.log(stockCandles)
 
     useEffect( ()=>{
-        console.log('useEffect')
         // await fetch profile data
         // set stockCandles
         // fetch profile data: list of stocks and quantity
@@ -93,7 +90,6 @@ function App() {
     }, [])
 
     useEffect(()=>{
-        console.log(profileStocks)
         calculateStockCandles()
     }, [profileStocks])
 
