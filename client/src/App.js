@@ -82,7 +82,6 @@ function App() {
         finnhubClient.marketNews(newsType, {}, (err, data, response)=>{
             if(err)
                 throw err
-
             setNews(data.slice(0, 30))
         })
     }
