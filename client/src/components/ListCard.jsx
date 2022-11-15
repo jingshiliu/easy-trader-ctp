@@ -3,7 +3,7 @@ import LineGraph from "./LineGraph";
 import '../CSS/StatsCard.css'
 
 
-function StatsCard({stockData}) {
+function ListCard({stockData}) {
 
     function getCurPrice(){
         return stockData.candle[stockData.candle.length - 1]
@@ -20,4 +20,4 @@ function StatsCard({stockData}) {
     );
 }
 
-export default StatsCard;
+export default ListCard;
