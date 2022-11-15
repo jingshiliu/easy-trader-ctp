@@ -12,5 +12,11 @@
     padding-top: 10px;
 }
 
+.PortfolioOverview__change-message .increase{
+    color: #52e552;
+}
 
+PortfolioOverview__change-message .decrease{
+    color: #ff0000;
+}
 

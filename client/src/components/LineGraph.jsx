@@ -5,9 +5,11 @@ import '../CSS/LineGraph.css'
 
 const blue = "grey"
 
-function LineGraph({yAxes= Array(30).fill(0), xAxesLength = yAxes.length}) {
+function LineGraph({yAxes= Array(30).fill(0), xAxesLength = yAxes.length, reverseArray=false}) {
     ChartJS.register(...registerables)
 
+    if(reverseArray)
+        yAxes = yAxes.reverse()
     return (
         <section className='LineGraph'>
             <div className="line-graph__container">

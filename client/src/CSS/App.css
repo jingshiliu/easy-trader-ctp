@@ -13,6 +13,7 @@
     /* overflow-y: scroll; */
     background-color: black;
     text-align: center;
+    overflow-y: scroll;
 }
 
 .app__body{
@@ -25,4 +26,10 @@
 
 .app__body__container{
     width: 1024px;
+}
+
+.App .Header{
+    position: sticky;
+    width: 100vw;
+    top: 100px;
 }

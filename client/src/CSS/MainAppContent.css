@@ -4,5 +4,15 @@
 }
 
 .MainBodyContent__column{
+    width: 300px;
+    height: 1500px;
+    overflow-y: scroll;
+}
 
+.MainBodyContent__column:first-child{
+    flex: 0.3;
+}
+
+.MainBodyContent__column:last-child{
+    flex: 0.6;
 }
