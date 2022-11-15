@@ -1,22 +1,29 @@
 import React from 'react';
 import LineGraph from "./LineGraph";
-import '../CSS/StatsCard.css'
+import '../CSS/ListCard.css'
+import StockCard from "./StockCard";
+import NewsCard from "./NewsCard";
 
 
-function ListCard({stockData}) {
+function ListCard({cardData, cardType='StockCard'}) {
 
-    function getCurPrice(){
-        return stockData.candle[stockData.candle.length - 1]
+    let card;
+    switch (cardType){
+        case 'StockCard':
+            card = <StockCard stockData={cardData}/>
+            break
+        case 'NewsCard':
+            card = <NewsCard newsData={cardData}/>
+            break
+        default:
+            card = <StockCard stockData={cardData}/>
     }
 
+
     return (
-        <a className='StatsCard' href='#'>
-            <span>{stockData.symbol}</span>
-
-            <LineGraph yAxes={stockData.candle} />
-
-            <span>${getCurPrice()}</span>
-        </a>
+        <div className='ListCard'>
+            {card}
+        </div>
     );
 }
 

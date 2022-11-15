@@ -53,6 +53,7 @@ function getTimestampInSeconds () {
 function App() {
     const [profileStocks, setProfileStocks] = useState([])
     const [stockCandles, setStockCandles] = useState([])
+    const [news, setNews] = useState([])
 
     function calculateStockCandles(){
         let candles = [] // list of {symbol, candle, quantity}
@@ -77,10 +78,18 @@ function App() {
             })
         }
     }
+    function requestNews(newsType='general'){
+        finnhubClient.marketNews(newsType, {}, (err, data, response)=>{
+            if(err)
+                throw err
 
-    console.log(stockCandles)
+            setNews(data.slice(0, 30))
+        })
+    }
+
 
     useEffect( ()=>{
+        requestNews()
         // await fetch profile data
         // set stockCandles
         // fetch profile data: list of stocks and quantity
@@ -105,7 +114,7 @@ function App() {
                         <PortfolioOverview stockCandles={stockCandles} />
                     </div>
 
-                    <MainAppContent stockCandles={stockCandles}/>
+                    <MainAppContent stockCandles={stockCandles} news={news}/>
 
                 </div>
 

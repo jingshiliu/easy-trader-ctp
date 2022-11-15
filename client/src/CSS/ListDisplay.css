@@ -1,5 +1,5 @@
 .ListDisplay{
-    flex: 0.3;
+    margin-top: 1em;
     color: white;
 }
 
@@ -12,4 +12,5 @@
 
 .ListDisplay__header{
     font-size: larger;
+    margin-top: 1em;
 }

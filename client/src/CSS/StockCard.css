@@ -1,0 +1,27 @@
+.StockCard{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+    margin: 10px 0;
+    color: white;
+    flex-direction: row;
+}
+
+.StockCard:hover{
+    background-color: #000f;
+}
+
+.StockCard:link{
+    text-decoration: none;
+}
+
+.StockCard .LineGraph{
+    justify-self: start;
+
+}
+
+.StockCard .LineGraph .line-graph__container{
+    width: 150px;
+    height: 100px;
+}
