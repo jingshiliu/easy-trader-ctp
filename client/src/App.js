@@ -1,7 +1,6 @@
 import './CSS/App.css'
 import Header from './components/Header'
 import PortfolioOverview from "./components/PortfolioOverview";
-import Stats from "./components/Stats";
 import {useEffect, useState} from "react";
 import MainAppContent from "./components/MainAppContent";
 
@@ -54,6 +53,7 @@ function getTimestampInSeconds () {
 function App() {
     const [profileStocks, setProfileStocks] = useState([])
     const [stockCandles, setStockCandles] = useState([])
+    const [news, setNews] = useState([])
 
     function calculateStockCandles(){
         let candles = [] // list of {symbol, candle, quantity}
@@ -61,7 +61,6 @@ function App() {
         let from = until - DAYS * HOURS * 3600
 
         for (let i = 0; i < profileStocks.length; i++) {
-            console.log(i)
             // fetch candle data of each stock
             finnhubClient.stockCandles(profileStocks[i].symbol, 'D', from, until, (err, data)=>{
                 if(err)
@@ -79,11 +78,17 @@ function App() {
             })
         }
     }
+    function requestNews(newsType='general'){
+        finnhubClient.marketNews(newsType, {}, (err, data, response)=>{
+            if(err)
+                throw err
+            setNews(data.slice(0, 30))
+        })
+    }
 
-    console.log(stockCandles)
 
     useEffect( ()=>{
-        console.log('useEffect')
+        requestNews()
         // await fetch profile data
         // set stockCandles
         // fetch profile data: list of stocks and quantity
@@ -93,7 +98,6 @@ function App() {
     }, [])
 
     useEffect(()=>{
-        console.log(profileStocks)
         calculateStockCandles()
     }, [profileStocks])
 
@@ -106,7 +110,7 @@ function App() {
                         <PortfolioOverview stockCandles={stockCandles} />
                     </div>
 
-                    <MainAppContent stockCandles={stockCandles}/>
+                    <MainAppContent stockCandles={stockCandles} news={news}/>
 
                 </div>
 

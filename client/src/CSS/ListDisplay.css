@@ -1,15 +1,16 @@
-.Stats{
-    flex: 0.3;
+.ListDisplay{
+    margin-top: 1em;
     color: white;
 }
 
-.stats__container{
+.ListDisplay__container{
     border: 1px solid transparent;
     border-radius: 0.5em;
     height: fit-content;
     background-color: #fff1;
 }
 
-.stats__header{
+.ListDisplay__header{
     font-size: larger;
+    margin-top: 1em;
 }

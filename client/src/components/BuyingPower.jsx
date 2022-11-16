@@ -2,11 +2,11 @@ import '../CSS/BuyingPower.css'
 import React, {useState} from 'react';
 
 function BuyingPower({buyingPower}) {
-    const [isAddingBuyingPower, setIsAddingBuyingPower] = useState(false);
+    const [isUiActive, setIsUiActive] = useState(false);
 
     buyingPower = 10000;
     let buyingUI;
-    if(isAddingBuyingPower){
+    if(isUiActive){
         buyingUI = (
             <form className='BuyingPower__add-buying-power'>
                 <div>
@@ -31,9 +31,9 @@ function BuyingPower({buyingPower}) {
         <section className='BuyingPower'>
             <div className="BuyingPower__container">
                 <div className="BuyingPower__header"
-                    onClick={()=>{
-                        setIsAddingBuyingPower(!isAddingBuyingPower)
-                    }}>
+                     onClick={()=>{
+                         setIsUiActive(!isUiActive)
+                     }}>
                     <span>Buying Power: </span>
                     <span>${buyingPower}</span>
                 </div>

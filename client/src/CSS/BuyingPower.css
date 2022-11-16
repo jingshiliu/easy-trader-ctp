@@ -1,18 +1,15 @@
 .BuyingPower{
-    height: fit-content;
     color: white;
     margin: 1em 0;
 }
 
 .BuyingPower__container{
-    height: fit-content;
     padding: 1em;
     border-radius: 1em;
     background-color: #fff1;
 }
 
 .BuyingPower__header{
-    height: fit-content;
     display: flex;
     justify-content: space-between;
     margin-bottom: 1em;
@@ -27,7 +24,6 @@
     position: relative;
     right: 20%;
 }
-
 
 
 .BuyingPower__add-buying-power{

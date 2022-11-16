@@ -1,0 +1,9 @@
+.ListCard {
+    width: 100%;
+    height: fit-content;
+}
+
+.ListCard:link{
+    text-decoration: none;
+}
+

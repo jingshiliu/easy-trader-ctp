@@ -1,0 +1,10 @@
+.NewsCard{
+    height: fit-content;
+    padding: 2em;
+    margin-top: 1em;
+    text-align: start;
+}
+
+.NewsCard__header{
+    color: #3a86ff;
+}
