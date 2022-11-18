@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jingshiliu/stock-trading-ctp/issues"
   },
-  "homepage": "https://github.com/jingshiliu/stock-trading-ctp#readme"
+  "homepage": "https://github.com/jingshiliu/stock-trading-ctp#readme",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
 }

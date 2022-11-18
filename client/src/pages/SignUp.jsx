@@ -14,7 +14,7 @@ function SignUp(){
     const [userPassReg, setUserPassReg] = useState('')
 
     const register = () => {
-        Axios.post('http://localhost5000/register', {
+        Axios.post('http://localhost3001/register', {
             username: usernameReg, 
             email:userEmailReg, 
             password:userPassReg
