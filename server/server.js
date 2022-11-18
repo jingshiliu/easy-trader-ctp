@@ -1,13 +1,8 @@
 //import express
 const express = require('express');
-const mysql = require('mysql');
 const cors = require('cors');
-const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "8814", 
-    database: "Trading_app"
-});
+const db = require('./config/db')
+
 //create app
 const app = express();
 
@@ -15,8 +10,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-//startup backend server running on port:5000
-app.listen(5000,() => {console.log("Server started on port 5000")} );
 
 app.post('/register', (req,res) => {
 
@@ -27,5 +20,9 @@ app.post('/register', (req,res) => {
     db.query("INSERT INTO Accounts (username,password,email) VALUES (?,?,?)", [username,password,email], 
     (err,result)=>{
         console.log(err);
+        
     });
 });
+
+//startup backend server running on port:5000
+app.listen(3001,() => {console.log("Server started on port 3001")} );

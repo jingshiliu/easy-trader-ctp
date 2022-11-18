@@ -20,7 +20,7 @@ function SignUp(){
             password:userPassReg
         }).then((response) =>{
             console.log(response);
-        })
+        });
     };
 
     return(
