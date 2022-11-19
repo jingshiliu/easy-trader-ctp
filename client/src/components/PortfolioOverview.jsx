@@ -22,7 +22,7 @@ function PortfolioOverview({stockCandles}) {
         }else {
             newChangeMessage = (
                 <p className='PortfolioOverview__change-message'>
-                    <span className='decrease'>+</span> ${valChange} (<span className='decrease'>+</span>{percentChange} %) Today
+                    <span className='decrease'>-</span> ${valChange*-1} (<span className='decrease'>-</span>{percentChange*-1} %) Today
                 </p>
             )
         }
