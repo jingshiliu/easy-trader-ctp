@@ -42,7 +42,7 @@ api_key.apiKey = "cdaaobqad3i97v8jfvagcdaaobqad3i97v8jfvb0"
 const finnhubClient = new finnhub.DefaultApi()
 
 const HOURS = 24
-const DAYS = 60
+const DAYS = 70
 const GRAPH_LENGTH = 30
 
 function getTimestampInSeconds () {
@@ -54,7 +54,7 @@ function App() {
     const [profileStocks, setProfileStocks] = useState([])
     const [stockCandles, setStockCandles] = useState([])
     const [news, setNews] = useState([])
-
+    console.log(stockCandles)
     function calculateStockCandles(){
         let candles = [] // list of {symbol, candle, quantity}
         let until = getTimestampInSeconds()
