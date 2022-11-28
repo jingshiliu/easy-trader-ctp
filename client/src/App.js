@@ -36,29 +36,17 @@ const defaultProfileStocks = [
     },
 ]
 
-const finnhub = require('finnhub');
-const api_key = finnhub.ApiClient.instance.authentications['api_key'];
-api_key.apiKey = "cdaaobqad3i97v8jfvagcdaaobqad3i97v8jfvb0"
-const finnhubClient = new finnhub.DefaultApi()
-
-const HOURS = 24
-const DAYS = 70
-const GRAPH_LENGTH = 30
-
-function getTimestampInSeconds () {
-    return Math.floor(Date.now() / 1000)
-}
-
-
 function App() {
     const [profileStocks, setProfileStocks] = useState([])
     const [stockCandles, setStockCandles] = useState([])
     const [news, setNews] = useState([])
-    console.log(stockCandles)
+    const {finnhubClient, getTimeInterval} = require('./stock_api')
+    const GRAPH_LENGTH = 30
+
+
     function calculateStockCandles(){
         let candles = [] // list of {symbol, candle, quantity}
-        let until = getTimestampInSeconds()
-        let from = until - DAYS * HOURS * 3600
+        let {from, until} = getTimeInterval()
 
         for (let i = 0; i < profileStocks.length; i++) {
             // fetch candle data of each stock
