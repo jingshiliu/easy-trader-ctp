@@ -2,7 +2,7 @@ import React from 'react';
 // import {ReactComponent as Logo} from '../svg/logo.svg'
 import '../CSS/Header.css'
 import { Link } from "react-router-dom";
-
+import { auth, logout } from '../firebase';
 function Header() {
     return (
         <nav id="HeaderNav">
@@ -30,6 +30,14 @@ function Header() {
 
                         <li>
                             <Link className="link" to="/login">LogIn</Link>
+                        </li>
+
+                        <li>
+                            <Link className="link" to="/reset">Reset</Link>
+                        </li>
+
+                        <li>
+                            <Link className="link" onClick={logout}>Signout</Link>
                         </li>
 
                         <li>
