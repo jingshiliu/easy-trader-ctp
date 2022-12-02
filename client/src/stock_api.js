@@ -10,6 +10,12 @@ function getTimestampInSeconds () {
     return Math.floor(Date.now() / 1000)
 }
 
+/**
+ *
+ * @param start : number of days before today
+ * @param end : amount of days before today
+ * @returns {{from: number, until: number}}
+ */
 function getTimeInterval(start=DAYS, end=0){
     let until = getTimestampInSeconds() - end * HOURS * 3600
     let from = until - start * HOURS * 3600
