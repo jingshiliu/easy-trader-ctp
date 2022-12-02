@@ -10,12 +10,10 @@ function getTimestampInSeconds () {
     return Math.floor(Date.now() / 1000)
 }
 
-function getTimeInterval(start, end){
-    if(!start && !end){
-        let until = getTimestampInSeconds()
-        let from = until - DAYS * HOURS * 3600
-        return {from, until}
-    }
+function getTimeInterval(start=DAYS, end=0){
+    let until = getTimestampInSeconds() - end * HOURS * 3600
+    let from = until - start * HOURS * 3600
+    return {from, until}
 }
 
 export {finnhubClient, getTimeInterval}
