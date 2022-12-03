@@ -2,10 +2,13 @@ import React, {useEffect, useState} from 'react';
 import '../CSS/Investing.css'
 import Header from "../components/Header";
 import LineGraph from "../components/LineGraph";
+import {useLocation} from "react-router-dom";
 
 
 function Investing() {
-    const [stockSymbol, setStockSymbol] = useState('AAPL');
+    // const [stockSymbol, setStockSymbol] = useState('AAPL');
+    const location = useLocation();
+    const {stockSymbol} = location.state
     const [stockCandle, setStockCandle] = useState([]);
     const [stockPrice, setStockPrice] = useState(0);
     const {finnhubClient, getTimeInterval} = require('../stock_api')

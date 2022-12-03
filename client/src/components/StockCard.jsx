@@ -1,6 +1,7 @@
 import React from 'react';
 import LineGraph from "./LineGraph";
 import '../CSS/StockCard.css'
+import {Link} from "react-router-dom";
 
 
 /**
@@ -16,13 +17,13 @@ function StockCard({stockData}) {
     }
 
     return (
-        <a className='StockCard' href='#'>
+        <Link className='StockCard' href='#' to='/investing' state={{stockSymbol: stockData.symbol}}>
             <span>{stockData.symbol}</span>
 
             <LineGraph yAxes={stockData.candle} reverseArray={true}/>
 
             <span>${getCurPrice()}</span>
-        </a>
+        </Link>
     );
 }
 
