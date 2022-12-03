@@ -3,13 +3,23 @@ import React from 'react';
 import '../CSS/Header.css'
 import { Link } from "react-router-dom";
 import { auth, logout } from '../firebase';
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useEffect, useState } from "react";
+
 function Header() {
+    const [user, loading, error] = useAuthState(auth);
+    useEffect(() => {
+        if (loading) {
+            //maybe trigger a loading screen
+            return;
+        }
+    }, [user,loading]);
     return (
         <nav id="HeaderNav">
             <div className='Header'>
                 <div className='header__logo'>
                     <li>
-                        <Link className="link" to="/">Easy Trader</Link>
+                        <Link className="link" to="/Landing">Easy Trader</Link>
                         {/*<Logo className='.Logo' />*/}
                     </li>
                 </div>
@@ -25,24 +35,16 @@ function Header() {
                         </li>
 
                         <li>
-                            <Link className="link" to="/signup">SignUp</Link>
+                            {!user && (<Link className="link" to="/signup">SignUp</Link>)}
                         </li>
 
                         <li>
-                            <Link className="link" to="/login">LogIn</Link>
+                            {!user && (<Link className="link" to="/login">LogIn</Link>) }
                         </li>
 
                         <li>
-                            <Link className="link" to="/reset">Reset</Link>
+                            {user && (<Link className="link" to="/landing" onClick={logout}>Signout</Link>) }
                         </li>
-
-                        <li>
-                            <Link className="link" onClick={logout}>Signout</Link>
-                        </li>
-
-                        <li>
-                            <a href="/landing.html">Landing</a>
-                        </li >
 
                         <li>
                             <Link className="link" to="/">Account</Link>

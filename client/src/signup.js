@@ -31,37 +31,41 @@ function SignUp() {
     <div id="whole">
     <div id="rightSide">
         <div id="signUp">
-            <h1 class="signUpHeader">Sign Up</h1>
+            <Link to="/landing"><h1 id="appName">Easy Trader</h1></Link>
+            <h2 class="signUpHeader">Sign Up</h2>
             <form id="signupForm" action="">
                 <div class="inputContainer">
                     <FontAwesomeIcon icon={faUser} className="icons"/>
-                    <label for="user-name"></label>
+                    <label htmlFor="user-name"></label>
                     <input  class="inputField" 
                             type="text" 
                             id="user-name"
                             name="user-name"
+                            placeholder="your full name"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                     />
                 </div>
                 <div class="inputContainer">
                     <FontAwesomeIcon icon={faEnvelope} className="icons"/>
-                    <label for="user-email"></label>
+                    <label htmlFor="user-email"></label>
                     <input  class="inputField"
                             type="text"
                             id="user-email"
                             name="user-email"
+                            placeholder="email@email.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div class="inputContainer">
                     <FontAwesomeIcon icon={faLock} className="icons"/>
-                    <label for="user-password"></label>
+                    <label htmlFor="user-password"></label>
                     <input  class="inputField"
                             type="password"
                             id="user-password"
                             name="user-password"
+                            placeholder="secret password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                     />
@@ -73,13 +77,19 @@ function SignUp() {
                 </div>
                 
             </form>
-            <button
-                className="register__btn register__google"
-                onClick={signInWithGoogle}>
-                Register with Google
-            </button>
-            <div>
-                Already have an account? <Link to="/">Login</Link> now.
+
+            <div className="ButtonWrapper">
+                <button
+                    className="login-with-google-btn"
+                    onClick={signInWithGoogle}>
+                    Register with Google
+                </button>
+            </div>
+
+            <div className ="formFooter">
+                <div>
+                    Already have an account? <Link to="/login">Login</Link> now.
+                </div>
             </div>
         </div>
     </div>

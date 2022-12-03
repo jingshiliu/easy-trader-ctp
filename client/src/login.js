@@ -18,13 +18,14 @@ function Login(){
             return;
         }
         if(user) navigate("/")
-        else navigate("/")
+        else navigate("/login")
     }, [user,loading]);
     return(
         <div>
             <div id="rightSide">
                 <div id="logIn">
-                    <h1 className="LogInHeader">Log in</h1>
+                    <Link to="/landing"><h1 id="appName">Easy Trader</h1></Link>
+                    <h2 className="LogInHeader">Log in</h2>
                     <form id="LogInForm" action="">
                         <div className="inputContainer">
                             <FontAwesomeIcon icon={faEnvelope} className="icons"/>                        
@@ -58,14 +59,19 @@ function Login(){
                             </button>
                         </div>
                     </form>
-                <button className="login__btn login__google" onClick={signInWithGoogle}>
-                    Login with Google
-                </button>
-                <div>
-                    <Link to="/reset">Forgot Password</Link>
+                <div className="ButtonWrapper">
+                    <button className="login-with-google-btn" onClick={signInWithGoogle}>
+                        Login with Google
+                    </button>
                 </div>
-                <div>
-                    Don't have an account? <Link to="/SignUp">Register</Link> now.
+
+                <div className = "formFooter">
+                    <div>
+                        <Link to="/reset">Forgot Password</Link>
+                    </div>
+                    <div>
+                        Don't have an account? <Link to="/SignUp">Register</Link> now.
+                    </div>
                 </div>
                 </div>
         </div>

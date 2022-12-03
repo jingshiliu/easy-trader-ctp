@@ -9,6 +9,7 @@ import SignUp from './signup';
 import Layout from './pages/Layout';
 import Investing from "./pages/Investing";
 import Reset from './reset';
+import LandingPage from './pages/Landing';
 
 export default class Test extends React.Component {
     render() {
@@ -20,6 +21,7 @@ export default class Test extends React.Component {
                     <Route path="/" element={<Layout/>}/>
                     <Route index element={<App/>}/>
                     <Route path='investing' element={<Investing/>}/>
+                    <Route path ="landing" element={<LandingPage/>}/>
                     <Route path="/reset" element={<Reset/>}/>
                     <Route path="*" element={<NoPage/>}/>
                 </Routes>

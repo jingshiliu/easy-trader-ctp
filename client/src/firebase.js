@@ -4,6 +4,7 @@ import { initializeApp } from "firebase/app";
 import {
     GoogleAuthProvider,
     getAuth,
+    onAuthStateChanged,
     signInWithPopup,
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
@@ -34,6 +35,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+onAuthStateChanged(auth, user => console.log(user));
 //Using google auth to log in if it fails catch block will catch
 //checks database to see if user is registered if not it makes a new record
 //all done through firebase
@@ -110,6 +112,8 @@ const logout = () => {
 export{
     auth,
     db,
+    getAuth,
+    onAuthStateChanged,
     signInWithGoogle,
     signInWithEmailAndPassword,
     logInWithEmailAndPassword,
