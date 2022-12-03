@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jingshiliu/stock-trading-ctp/issues"
   },
-  "homepage": "https://github.com/jingshiliu/stock-trading-ctp#readme"
+  "homepage": "https://github.com/jingshiliu/stock-trading-ctp#readme",
+  "dependencies": {
+    "firebase": "^9.14.0"
+  }
 }

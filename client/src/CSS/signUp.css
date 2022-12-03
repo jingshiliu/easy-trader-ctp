@@ -14,7 +14,7 @@ body{
 
 #signUp{
     position: relative;
-    top:40%;
+    top:30%;
     justify-content: center;
     text-align: center;
     margin-left: 20%;
@@ -81,4 +81,5 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 
