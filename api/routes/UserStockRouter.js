@@ -2,14 +2,14 @@ const UserStockController = require('../controllers/UserStockController')
 
 const router = require('express').Router()
 
-router.post('/stock/add', UserStockController.addNewUserStock)
+router.post('/add', UserStockController.addNewUserStock)
 
-router.post('/stock/update', UserStockController.updateUserStock)
+router.post('/update', UserStockController.updateUserStock)
 
-router.post('/stock/remove', UserStockController.removeStock)
+router.delete('/remove', UserStockController.removeStock)
 
-router.post('/stock/getAll', UserStockController.getAllStocks)
+router.get('/getAll', UserStockController.getAllStocks)
 
-router.post('/stock/getOne', UserStockController.getOneStock)
+router.get('/getOne', UserStockController.getOneStock)
 
 module.exports = router
