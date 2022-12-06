@@ -9,7 +9,7 @@ const port = process.env.PORT || 8001
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
-app.use('/user-stock', UserStockRouter)
+app.use('/userstock', UserStockRouter)
 
 app.use('/stock', StockRouter)
 
