@@ -8,8 +8,8 @@ router.post('/update', UserStockController.updateUserStock)
 
 router.delete('/remove', UserStockController.removeStock)
 
-router.get('/getAll', UserStockController.getAllStocks)
+router.post('/getAll', UserStockController.getAllStocks)
 
-router.get('/getOne', UserStockController.getOneStock)
+router.post('/getOne', UserStockController.getOneStock)
 
 module.exports = router
