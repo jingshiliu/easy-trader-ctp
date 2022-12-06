@@ -24,7 +24,9 @@ function getTimeInterval(start=DAYS, end=0){
 
 
 async function getStockCandles(req, res){
-    const {stockSymbols, start, end} = req.query
+    let {stockSymbols, start, end} = req.body
+
+    stockSymbols = JSON.parse(stockSymbols)
     const {from, until} = getTimeInterval()
     let START = start || from
     let END = end || until

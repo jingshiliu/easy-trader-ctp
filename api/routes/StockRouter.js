@@ -4,6 +4,6 @@ const router = require('express').Router()
 
 router.get('/quote', StockController.quote)
 
-router.get('/candles', StockController.getStockCandles)
+router.post('/candles', StockController.getStockCandles)
 
 module.exports = router
