@@ -17,8 +17,8 @@ function StockCard({stockData}) {
     }
 
     return (
-        <Link className='StockCard' href='#' to='/investing' state={{stockSymbol: stockData.symbol}}>
-            <span>{stockData.symbol}</span>
+        <Link className='StockCard' href='#' to='/investing' state={{stockSymbol: stockData.stockSymbol}}>
+            <span>{stockData.stockSymbol}</span>
 
             <LineGraph yAxes={stockData.candle} reverseArray={true}/>
 
