@@ -19,7 +19,7 @@ function Header() {
             <div className='Header'>
                 <div className='header__logo'>
                     <li>
-                        <Link className="link" to="/Landing">Easy Trader</Link>
+                        <Link className="link" to="/home">Easy Trader</Link>
                         {/*<Logo className='.Logo' />*/}
                     </li>
                 </div>
@@ -31,7 +31,7 @@ function Header() {
                 <div className="NavigationList">
                     <ul className="header__menu-items">
                         <li>
-                            <Link className="link" to="/">Home</Link>
+                            <Link className="link" to="/home">Home</Link>
                         </li>
 
                         <li>
@@ -43,11 +43,11 @@ function Header() {
                         </li>
 
                         <li>
-                            {user && (<Link className="link" to="/landing" onClick={logout}>Signout</Link>) }
+                            {user && (<Link className="link" to="/" onClick={logout}>Signout</Link>) }
                         </li>
 
                         <li>
-                            <Link className="link" to="/">Account</Link>
+                            <Link className="link" to="/home">Account</Link>
                         </li>
                     </ul>
                 </div>

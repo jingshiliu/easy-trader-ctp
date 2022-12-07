@@ -25,7 +25,7 @@ function SignUp() {
   };
   useEffect(() => {
     if (loading) return;
-    if (user) history("/");
+    if (user) history("/home");
   }, [user, loading]);
   return(
     <div id="whole">

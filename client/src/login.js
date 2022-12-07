@@ -17,7 +17,7 @@ function Login(){
             //maybe trigger a loading screen
             return;
         }
-        if(user) navigate("/")
+        if(user) navigate("/home")
         else navigate("/login")
     }, [user,loading]);
     return(
