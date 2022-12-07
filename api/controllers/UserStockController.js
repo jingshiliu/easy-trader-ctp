@@ -10,8 +10,11 @@ const {UserStock} = require('../models')
  * @returns {Promise<void>}
  */
 async function addNewUserStock(req, res){
-    console.log(req.body)
     const {userId, stockSymbol, quantity} = req.body
+    if(!userId || !stockSymbol || !quantity){
+        res.json({status: 400})
+        return
+    }
 
     // check if userId-stockSymbol exist
     let record = await UserStock.findOne({where: {userId, stockSymbol}})
@@ -44,6 +47,11 @@ async function addNewUserStock(req, res){
 async function removeStock(req, res){
     const {userId, stockSymbol, quantity} = req.body
 
+    if(!userId || !stockSymbol || !quantity){
+        res.json({status: 400})
+        return
+    }
+
     let record = await UserStock.findOne({where: {userId, stockSymbol}})
     if(!record){
         res.json({message: 'Record does not exist, try addStock instead'})
@@ -63,9 +71,35 @@ async function removeStock(req, res){
 }
 
 
+async function removeAllStock(req, res){
+    const {userId, stockSymbol} = req.body
+
+    if(!userId || !stockSymbol){
+        res.json({status: 400})
+        return
+    }
+
+    let record = await UserStock.findOne({where: {userId, stockSymbol}})
+    if(!record){
+        res.json({message: 'Record does not exist, try addStock instead'})
+        return
+    }
+
+    let oldQuantity = record.quantity
+    record.quantity = 0
+    await record.save()
+    res.json({message: `Successfully removed stock ${stockSymbol} of userId ${userId} from ${oldQuantity} to ${record.quantity}`})
+}
+
 
 async function updateUserStock(req, res){
     const {userId, stockSymbol, operation, changeQuantity} = req.body
+
+    if(!userId || !stockSymbol || !changeQuantity){
+        res.json({status: 400})
+        return
+    }
+
     const userStockRecord = await UserStock.findOne({where: {userId, stockSymbol}})
 
     let newQuantity;
@@ -85,6 +119,11 @@ async function updateUserStock(req, res){
 
 async function getAllStocks(req, res){
     const {userId} = req.body
+
+    if(userId === undefined){
+        res.json({status: 400})
+        return
+    }
 
     const records = await UserStock.findAll({where:{userId}})
     const data = []
@@ -113,6 +152,11 @@ async function getAllStocks(req, res){
 async function getOneStock(req, res){
     const {userId, stockSymbol} = req.body
 
+    if(!userId || !stockSymbol){
+        res.json({status: 400})
+        return
+    }
+
     const record = await UserStock.findOne({where:{userId, stockSymbol}})
 
     if(!record){
@@ -136,5 +180,6 @@ module.exports = {
     updateUserStock,
     removeStock,
     getAllStocks,
-    getOneStock
+    getOneStock,
+    removeAllStock,
 }

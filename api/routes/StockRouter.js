@@ -6,4 +6,6 @@ router.get('/quote', StockController.quote)
 
 router.post('/candles', StockController.getStockCandles)
 
+router.get('/candle', StockController.getStockCandle)
+
 module.exports = router

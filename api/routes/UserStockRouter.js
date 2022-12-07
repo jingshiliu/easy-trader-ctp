@@ -8,6 +8,8 @@ router.post('/update', UserStockController.updateUserStock)
 
 router.delete('/remove', UserStockController.removeStock)
 
+router.post('/removeAll', UserStockController.removeAllStock)
+
 router.post('/getAll', UserStockController.getAllStocks)
 
 router.post('/getOne', UserStockController.getOneStock)
