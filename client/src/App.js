@@ -4,101 +4,91 @@ import PortfolioOverview from "./components/PortfolioOverview";
 import {useEffect, useState} from "react";
 import MainAppContent from "./components/MainAppContent";
 
+// const backendPort = 8001
+// const userId = 1
+const backendApi = `` // localhost:${backendPort}
 
-const defaultProfileStocks = [
-    {
-        symbol: 'GME',
-        quantity: 3,
-    },
-    {
-        symbol: 'SNAP',
-        quantity: 10,
-    },
-    {
-        symbol: 'AAPL',
-        quantity: 21,
-    },
-    {
-        symbol: 'TWTR',
-        quantity: 13,
-    },
-    {
-        symbol: 'TSLA',
-        quantity: 31,
-    },
-    {
-        symbol: 'NFLX',
-        quantity: 22,
-    },
-    {
-        symbol: 'UBER',
-        quantity: 103,
-    },
-]
 
 function App() {
     const [profileStocks, setProfileStocks] = useState([])
     const [stockCandles, setStockCandles] = useState([])
     const [news, setNews] = useState([])
-    const {finnhubClient, getTimeInterval} = require('./stock_api')
-    const GRAPH_LENGTH = 30
+
+    async function requestCandles(stockSymbols = profileStocks.map(stockData => stockData.stockSymbol)) {
+        console.log('requestCandle')
+        console.log(stockSymbols)
+        console.log(JSON.stringify(stockSymbols))
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({stockSymbols}),
+        }
 
 
-    function calculateStockCandles(){
-        let candles = [] // list of {symbol, candle, quantity}
-        let {from, until} = getTimeInterval()
+        const res = await fetch(`${backendApi}/stock/candles`, options)
+        const {data} = (await res.json())
+        console.log(data)
 
-        for (let i = 0; i < profileStocks.length; i++) {
-            // fetch candle data of each stock
-            finnhubClient.stockCandles(profileStocks[i].symbol, 'D', from, until, (err, data)=>{
-                if(err)
-                    throw err;
-                candles.push(
-                    {
-                        symbol: profileStocks[i].symbol,
-                        candle: data['c'].slice(-GRAPH_LENGTH, data['c'].length),
-                        quantity: profileStocks[i].quantity
-                    }
-                )
-                if(candles.length === profileStocks.length){
-                    setStockCandles(candles)
-                }
+        const candles = []
+        for (const candle of data) {
+            candles.push({
+                stockSymbol: candle.stockSymbol,
+                candle: candle.candle,
+                quantity: profileStocks.filter(stock => stock.stockSymbol === candle.stockSymbol)[0].quantity
             })
         }
-    }
-    function requestNews(newsType='general'){
-        finnhubClient.marketNews(newsType, {}, (err, data, response)=>{
-            if(err)
-                throw err
-            setNews(data.slice(0, 30))
-        })
+        setStockCandles(candles)
+        console.log(candles)
     }
 
+    async function requestProfile() {
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+                userId: 1
+            }),
+        }
+        const res = await fetch(`${backendApi}/userstock/getAll`, options)
+        const profile = (await res.json())
 
-    useEffect( ()=>{
+        console.log(profile)
+        setProfileStocks(profile.data)
+    }
+
+    async function requestNews(newsType = 'general') {
+        const res = await fetch(`${backendApi}/news`)
+        setNews((await res.json()))
+    }
+
+    useEffect(() => {
         requestNews()
-        // await fetch profile data
-        // set stockCandles
-        // fetch profile data: list of stocks and quantity
-        setProfileStocks(defaultProfileStocks)
-        // establish websocket connection with api, and pass in stock tickers(symbol)
-        // pass in data to child
+            .catch(err => console.log(err))
+
+        requestProfile()
+            .then(()=> requestCandles())
+            .catch(err => console.log(err))
     }, [])
 
-    useEffect(()=>{
-        calculateStockCandles()
+    useEffect(() => {
+        requestCandles()
+            .catch(err => console.log(err))
     }, [profileStocks])
 
     return (
         <div className="App">
             <div className='app__header'>
-                <Header />
+                <Header/>
             </div>
 
             <div className='app__body'>
                 <div className="app__body__container">
                     <div className="app__body__main-chart__container">
-                        <PortfolioOverview stockCandles={stockCandles} />
+                        <PortfolioOverview stockCandles={stockCandles}/>
                     </div>
 
                     <MainAppContent stockCandles={stockCandles} news={news}/>

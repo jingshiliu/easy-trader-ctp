@@ -4,6 +4,9 @@ import Header from "../components/Header";
 import LineGraph from "../components/LineGraph";
 import {useLocation} from "react-router-dom";
 
+const backendPort = 8001
+const backendApi = ``
+
 
 function Investing() {
     // const [stockSymbol, setStockSymbol] = useState('AAPL');
@@ -11,16 +14,15 @@ function Investing() {
     const {stockSymbol} = location.state
     const [stockCandle, setStockCandle] = useState([]);
     const [stockPrice, setStockPrice] = useState(0);
-    const {finnhubClient, getTimeInterval} = require('../stock_api')
 
     useEffect(() => {
-        // req stock candle
-        let {from, until} = getTimeInterval()
-        finnhubClient.stockCandles(stockSymbol, 'D', from, until, (err, data) =>{
-            if(err) throw err;
-            setStockCandle(data['c'].slice(-30, data['c'].length))
-            setStockPrice(data['c'][data['c'].length - 1])
-        })
+        (async ()=>{
+            const res = await fetch(`${backendApi}/stock/candle?stockSymbol=${stockSymbol}`)
+            const data = await res.json()
+
+            setStockCandle(data['candle'])
+            setStockPrice(data['candle'][data['candle'].length - 1])
+        })()
     }, []);
 
 
