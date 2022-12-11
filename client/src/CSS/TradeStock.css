@@ -1,0 +1,50 @@
+.TradeStockUI{
+    margin: 2em 2em 2em 0;
+    border: 1px solid #fff1;
+    padding: 1em;
+    border-radius: 1em;
+    background-color: #fff1;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.TradeStockUI *{
+    margin: 0.5em 0;
+}
+
+.TradeStockUI input::-webkit-outer-spin-button,
+.TradeStockUI input::-webkit-inner-spin-button {
+    display: none;
+}
+
+.TradeStockUI button{
+    padding: 0.8em ;
+    border-radius: 0.5em;
+    border-style: none;
+    background-color: var(--hover-blue);
+    cursor: pointer;
+}
+
+.TradeStockUI button:hover{
+    background-color: #219ebc;
+}
+.TradeStockUI p .TradeStockUI__input-container input{
+    background-color: #0000;
+    border-style: none;
+    padding-left: 1em;
+    color: white;
+}
+
+.TradeStockUI p .TradeStockUI__input-container input:focus-visible{
+    outline: none;
+}
+
+.TradeStockUI p .TradeStockUI__input-container{
+    display: inline-block;
+    border: 1px solid #fff5;
+    border-radius: 0.4em;
+    margin-left: 1em;
+}
+
+

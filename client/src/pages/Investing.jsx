@@ -2,7 +2,9 @@ import React, {useEffect, useState} from 'react';
 import '../CSS/Investing.css'
 import Header from "../components/Header";
 import LineGraph from "../components/LineGraph";
+import BuyingStock from "../components/BuyingStock";
 import {useLocation} from "react-router-dom";
+import SellingStock from "../components/SellingStock";
 
 const backendPort = 8001
 const backendApi = ``
@@ -52,8 +54,20 @@ function Investing() {
                         <p>Amount Owned: {stockQuantity}</p>
                         <LineGraph yAxes={stockCandle}  />
                     </section>
-                    <section >
+                    <section className="Investing__stock-trade">
+                        <BuyingStock props={{
+                            userId,
+                            setStockQuantity,
+                            stockQuantity,
+                            stockSymbol
+                        }}/>
 
+                        <SellingStock props={{
+                            userId,
+                            setStockQuantity,
+                            stockQuantity,
+                            stockSymbol
+                        }}/>
                     </section>
                 </body>
             </div>
