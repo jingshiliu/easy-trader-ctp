@@ -7,7 +7,7 @@ async function getNews(req, res){
 
     finnhubClient.marketNews(newsType, {}, (err, data, response) => {
         if (err)
-            throw err
+            console.log(err)
         res.json(data.slice(0, amount))
     })
 }

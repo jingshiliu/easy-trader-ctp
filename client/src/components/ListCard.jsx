@@ -5,18 +5,18 @@ import StockCard from "./StockCard";
 import NewsCard from "./NewsCard";
 
 
-function ListCard({cardData, cardType='StockCard'}) {
+function ListCard({cardData, userId, cardType='StockCard'}) {
 
     let card;
     switch (cardType){
         case 'StockCard':
-            card = <StockCard stockData={cardData}/>
+            card = <StockCard stockData={cardData} userId={userId}/>
             break
         case 'NewsCard':
-            card = <NewsCard newsData={cardData}/>
+            card = <NewsCard newsData={cardData} userId={userId}/>
             break
         default:
-            card = <StockCard stockData={cardData}/>
+            card = <StockCard stockData={cardData} userId={userId}/>
     }
 
 

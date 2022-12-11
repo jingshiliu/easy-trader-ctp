@@ -11,6 +11,7 @@ const {UserStock} = require('../models')
  */
 async function addNewUserStock(req, res){
     const {userId, stockSymbol, quantity} = req.body
+    console.log(req.body)
     if(!userId || !stockSymbol || !quantity){
         res.json({status: 400})
         return
@@ -21,9 +22,10 @@ async function addNewUserStock(req, res){
     // update quantity if exist
     if(record){
         let oldQuantity = record.quantity
-        record.quantity += quantity;
+        record.quantity += Number(quantity);
         await record.save()
         res.json({
+            status: 200,
             message: `Record already exist, increasing quantity of ${record.stockSymbol} from ${oldQuantity} to ${record.quantity}`
         })
         return;
@@ -61,13 +63,13 @@ async function removeStock(req, res){
     if(oldQuantity < quantity){
         record.quantity = 0
         await record.save()
-        res.json({message: `Quantity to be removed more than the user holds, now user hold no Stock:  ${stockSymbol} of userId ${userId}  holded ${oldQuantity}, now ${0}`})
+        res.json({status: 200, message: `Quantity to be removed more than the user holds, now user hold no Stock:  ${stockSymbol} of userId ${userId}  holded ${oldQuantity}, now ${0}`})
         return
     }
 
     record.quantity -= quantity
     await record.save()
-    res.json({message: `Successfully removed stock ${stockSymbol} of userId ${userId} from ${oldQuantity} to ${record.quantity}`})
+    res.json({status: 200, message: `Successfully removed stock ${stockSymbol} of userId ${userId} from ${oldQuantity} to ${record.quantity}`})
 }
 
 

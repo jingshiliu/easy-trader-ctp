@@ -40,7 +40,12 @@ async function getStockCandles(req, res) {
     for (const stockSymbol of stockSymbols) {
         finnhubClient.stockCandles(stockSymbol, 'D', from, until, (err, data, response) => {
             console.log(data)
-            if(!data['c']) return;
+            try{
+                if(! data || !data['c']) return;
+            }catch (err){
+                console.log(err)
+                return
+            }
 
             candles.push({
                 stockSymbol,

@@ -19,9 +19,9 @@ export default class Test extends React.Component {
                     <Route path="signup" element={<SignUp/>}/>
                     <Route path="login" element={<Login/>}/>
                     <Route path="/" element={<Layout/>}/>
-                    <Route index element={<App/>}/>
+                    <Route path='/home' element={<App/>}/>
                     <Route path='investing' element={<Investing/>}/>
-                    <Route path ="landing" element={<LandingPage/>}/>
+                    <Route index element={<LandingPage/>}/>
                     <Route path="/reset" element={<Reset/>}/>
                     <Route path="*" element={<NoPage/>}/>
                 </Routes>

@@ -19,9 +19,14 @@
     }
 }
 
+.Investing__stock-info p{
+    color: #219ebc;
+}
 
-.Investing__stock-symbol{
+.Investing__stock-symbol p{
     margin: 2em 0;
     font-size: 25px;
     color: #3a86ff;
 }
+
+
