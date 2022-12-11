@@ -1,10 +1,10 @@
 import React from 'react';
 import ListDisplay from "./ListDisplay";
 
-function PortfolioStats({stockCandles}) {
+function PortfolioStats({stockCandles, userId}) {
     return (
         <div className='PortfolioStats'>
-            <ListDisplay listData={stockCandles} title='Portfolio'/>
+            <ListDisplay listData={stockCandles} userId={userId}  title='Portfolio'/>
         </div>
     );
 }

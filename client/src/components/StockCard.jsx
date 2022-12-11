@@ -11,13 +11,20 @@ import {Link} from "react-router-dom";
  * @returns {JSX.Element}
  * @constructor
  */
-function StockCard({stockData}) {
+function StockCard({stockData, userId}) {
     function getCurPrice() {
         return stockData.candle[stockData.candle.length - 1]
     }
+    console.log(stockData)
 
     return (
-        <Link className='StockCard' href='#' to='/investing' state={{stockSymbol: stockData.stockSymbol}}>
+        <Link className='StockCard'
+              target='' href='#'
+              to={{pathname: '/investing'}}
+              state={{
+                  stockSymbol: stockData.stockSymbol,
+                  userId: userId
+              }}>
             <span>{stockData.stockSymbol}</span>
 
             <LineGraph yAxes={stockData.candle} reverseArray={true}/>

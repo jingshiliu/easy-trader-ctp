@@ -6,12 +6,12 @@ import TrendingStocks from "./TrendingStocks";
 import PortfolioStats from "./PortfolioStats";
 import News from "./News";
 
-function MainAppContent({stockCandles, news}) {
+function MainAppContent({stockCandles, news, userId}) {
     return (
         <main className='MainAppContent'>
             <div className="MainBodyContent__column">
                 <BuyingPower />
-                <PortfolioStats stockCandles={stockCandles}/>
+                <PortfolioStats stockCandles={stockCandles} userId={userId}/>
             </div>
 
             {/*<div className="MainBodyContent__column">*/}

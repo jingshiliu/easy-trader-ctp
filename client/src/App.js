@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import MainAppContent from "./components/MainAppContent";
 
 // const backendPort = 8001
-// const userId = 1
+const userId = 1
 const backendApi = `` // localhost:${backendPort}
 
 
@@ -50,7 +50,7 @@ function App() {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: new URLSearchParams({
-                userId: 1
+                userId: userId
             }),
         }
         const res = await fetch(`${backendApi}/userstock/getAll`, options)
@@ -91,7 +91,7 @@ function App() {
                         <PortfolioOverview stockCandles={stockCandles}/>
                     </div>
 
-                    <MainAppContent stockCandles={stockCandles} news={news}/>
+                    <MainAppContent stockCandles={stockCandles} news={news} userId={userId}/>
 
                 </div>
 

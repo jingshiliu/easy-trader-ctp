@@ -4,7 +4,7 @@ import ListCard from "./ListCard";
 import {nanoid} from "nanoid";
 
 
-function ListDisplay({listData, title, cardType='StockCard'}) {
+function ListDisplay({listData, title, userId, cardType='StockCard'}) {
 
     return (
         <section className='ListDisplay'>
@@ -15,7 +15,7 @@ function ListDisplay({listData, title, cardType='StockCard'}) {
 
                 <div className="ListDisplay__content">
                     <div className="ListDisplay__rows">
-                        {listData.map(s => <ListCard cardData={s} cardType={cardType} key={nanoid()} />)}
+                        {listData.map(s => <ListCard cardData={s} userId={userId} cardType={cardType} key={nanoid()} />)}
                     </div>
                 </div>
             </div>
