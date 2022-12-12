@@ -18,4 +18,9 @@
     border-radius: 5px;
     background-color: transparent;
     border: none;
+    color: white;
+}
+
+.SearchBar input:focus-visible{
+    outline: var(--hover-blue) solid 1px;
 }

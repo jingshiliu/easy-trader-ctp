@@ -1,15 +1,15 @@
-import './CSS/App.css'
-import Header from './components/Header'
-import PortfolioOverview from "./components/PortfolioOverview";
+import '../CSS/App.css'
+import Header from '../components/Header'
+import PortfolioOverview from "../components/PortfolioOverview";
 import {useEffect, useState} from "react";
-import MainAppContent from "./components/MainAppContent";
+import MainAppContent from "../components/MainAppContent";
 
 // const backendPort = 8001
 const userId = 1
 const backendApi = `` // localhost:${backendPort}
 
 
-function App() {
+function Home() {
     const [profileStocks, setProfileStocks] = useState([])
     const [stockCandles, setStockCandles] = useState([])
     const [news, setNews] = useState([])
@@ -97,4 +97,4 @@ function App() {
     );
 }
 
-export default App;
+export default Home;

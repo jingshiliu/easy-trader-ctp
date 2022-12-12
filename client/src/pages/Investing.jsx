@@ -3,24 +3,28 @@ import '../CSS/Investing.css'
 import Header from "../components/Header";
 import LineGraph from "../components/LineGraph";
 import BuyingStock from "../components/BuyingStock";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import SellingStock from "../components/SellingStock";
 
-const backendPort = 8001
-const backendApi = ``
+
 
 
 function Investing() {
-    // const [stockSymbol, setStockSymbol] = useState('AAPL');
-    const {stockSymbol, quantity, userId} = useLocation().state
+    const {stockSymbol, userId} = useLocation().state
     const [stockCandle, setStockCandle] = useState([]);
     const [stockPrice, setStockPrice] = useState(0);
     const [stockQuantity, setStockQuantity] = useState(0);
+    const navigate = useNavigate()
 
     useEffect(() => {
         (async ()=>{
-            const res = await fetch(`${backendApi}/stock/candle?stockSymbol=${stockSymbol}`)
+            const res = await fetch(`/stock/candle?stockSymbol=${stockSymbol}`)
             const data = await res.json()
+
+            if(data.status === 400){
+                navigate('*')
+            }
+
             setStockCandle(data['candle'])
             setStockPrice(data['candle'][data['candle'].length - 1])
 
@@ -30,7 +34,7 @@ function Investing() {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
                 body: new URLSearchParams({
-                    userId,
+                    userId: 1,
                     stockSymbol
                 }),
             })

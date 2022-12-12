@@ -68,6 +68,10 @@ async function getStockCandle(req, res) {
     const {from, until} = getTimeInterval(start, end)
 
     finnhubClient.stockCandles(stockSymbol, 'D', from, until, (err, data, response) => {
+        if(data['s'] === 'no_data'){
+            res.json({status: 400})
+            return
+        }
         res.json({
             candle: data['c'].slice(-GRAPH_LENGTH, data['c'].length)
         })
