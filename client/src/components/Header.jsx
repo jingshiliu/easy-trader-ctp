@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { auth, logout } from '../firebase';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useEffect, useState } from "react";
+import SearchBar from "./SearchBar";
 
 function Header() {
     const [user, loading, error] = useAuthState(auth);
@@ -24,9 +25,7 @@ function Header() {
                     </li>
                 </div>
 
-                <div className='header__searchbar'>
-                    <input type="text" alt='search bar' placeholder='Search'/>
-                </div>
+                <SearchBar/>
 
                 <div className="NavigationList">
                     <ul className="header__menu-items">
