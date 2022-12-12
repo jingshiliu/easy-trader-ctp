@@ -90,12 +90,8 @@ function App() {
                     <div className="app__body__main-chart__container">
                         <PortfolioOverview stockCandles={stockCandles}/>
                     </div>
-
                     <MainAppContent stockCandles={stockCandles} news={news} userId={userId}/>
-
                 </div>
-
-
             </div>
         </div>
     );
