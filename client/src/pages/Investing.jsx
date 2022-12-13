@@ -42,7 +42,7 @@ function Investing() {
             console.log(userStockData)
             setStockQuantity(userStockData['data']['quantity'])
         })()
-    }, []);
+    }, [stockSymbol]);
 
 
     return (
