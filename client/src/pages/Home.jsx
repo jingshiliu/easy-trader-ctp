@@ -15,9 +15,6 @@ function Home() {
     const [news, setNews] = useState([])
 
     async function requestCandles(stockSymbols = profileStocks.map(stockData => stockData.stockSymbol)) {
-        console.log('requestCandle')
-        console.log(stockSymbols)
-        console.log(JSON.stringify(stockSymbols))
         const options = {
             method: 'POST',
             headers: {
@@ -26,10 +23,8 @@ function Home() {
             body: JSON.stringify({stockSymbols}),
         }
 
-
         const res = await fetch(`${backendApi}/stock/candles`, options)
         const {data} = (await res.json())
-        console.log(data)
 
         const candles = []
         for (const candle of data) {
@@ -40,10 +35,10 @@ function Home() {
             })
         }
         setStockCandles(candles)
-        console.log(candles)
     }
 
     async function requestProfile() {
+        // send request along with token right here
         const options = {
             method: 'POST',
             headers: {
@@ -56,7 +51,6 @@ function Home() {
         const res = await fetch(`${backendApi}/userstock/getAll`, options)
         const profile = (await res.json())
 
-        console.log(profile)
         setProfileStocks(profile.data)
     }
 

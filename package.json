@@ -20,6 +20,7 @@
     "express": "^4.18.2",
     "finnhub": "^1.2.16",
     "firebase": "^9.14.0",
+    "firebase-admin": "^11.3.0",
     "mysql2": "^2.3.3",
     "sequelize": "^6.26.0"
   }

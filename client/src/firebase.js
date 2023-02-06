@@ -1,6 +1,7 @@
 //reference : https://blog.logrocket.com/user-authentication-firebase-react-apps/
 
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 import {
     GoogleAuthProvider,
     getAuth,
@@ -22,15 +23,16 @@ import {
 } from 'firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyA4vZL_Vv8VSxZogM1TseEzCHmru0btNXo",
-    authDomain: "ctp-groupproject.firebaseapp.com",
-    projectId: "ctp-groupproject",
-    storageBucket: "ctp-groupproject.appspot.com",
-    messagingSenderId: "298142725946",
-    appId: "1:298142725946:web:1d29d5273712b222ec4203",
-    measurementId: "G-X7HLEGC7YZ"
-  };
+    apiKey: "AIzaSyBzLtbc4abUEcSO_7pEroIcrIe3I3fXjsk",
+    authDomain: "ctp-easytrader.firebaseapp.com",
+    projectId: "ctp-easytrader",
+    storageBucket: "ctp-easytrader.appspot.com",
+    messagingSenderId: "808706258919",
+    appId: "1:808706258919:web:f2ecb15c0121d04c26ef42",
+    measurementId: "G-JXYGS6YGCS"
+};
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -44,6 +46,7 @@ const signInWithGoogle = async () => {
     try {
         const res = await signInWithPopup(auth, googleProvider);
         const user = res.user;
+        console.log(user)
         const q = query(collection(db,'users'), where ('uid','==', user.uid));
         const docs = await getDocs(q);
         if (docs.docs.length === 0){
@@ -54,11 +57,25 @@ const signInWithGoogle = async () => {
                 email:user.email
             });
         }
+
+        // send idToken to own backend server
+        return (await user.getIdToken())
+
     } catch (err){
         console.error(err);
         alert(err.message);
     }
 };
+
+const sendIdTokenToBackend = (backendAddress, idToken)=>{
+    fetch(backendAddress, {
+        method: 'POST',
+        headers: {
+            'Authorization': idToken
+        }
+    })
+        .catch(err => console.error(err))
+}
 
 
 const logInWithEmailAndPassword = async(email, password) => {
