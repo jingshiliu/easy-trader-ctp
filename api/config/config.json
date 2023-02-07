@@ -2,7 +2,7 @@
     "development": {
         "username": "test",
         "password": "test",
-        "database": "easytrader",
+        "database": "easy_trader_testing",
         "host": "localhost",
         "dialect": "mysql"
     }

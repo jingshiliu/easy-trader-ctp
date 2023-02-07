@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
 import '../CSS/TradeStock.css'
 
+const backendPort = 8002
+const backendApi =  `http://localhost:${backendPort}`
+
 function SellingStock(props) {
     const {userId, setStockQuantity, stockQuantity, stockSymbol} = props.props
     const [quantity, setQuantity] = useState(0)
 
     async function sellStock(){
-        const res = await fetch('/userstock/remove', {
+        const res = await fetch(`${backendApi}/userstock/remove`, {
             method: 'DELETE',
             headers:{
                 'Content-Type': 'application/x-www-form-urlencoded'

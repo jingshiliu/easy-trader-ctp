@@ -45,7 +45,7 @@ const signInWithGoogle = async () => {
     try {
         const res = await signInWithPopup(auth, googleProvider);
         const user = res.user;
-        console.log(user)
+        console.log('user', user)
         const q = query(collection(db,'users'), where ('uid','==', user.uid));
         const docs = await getDocs(q);
         if (docs.docs.length === 0){
@@ -58,9 +58,10 @@ const signInWithGoogle = async () => {
         }
 
         // send idToken to own backend server
-        user.getIdToken()
-            .then(sendIdTokenToBackend)
-            .catch(err => console.err(err))
+        const uidToken = await user.getIdToken()
+        console.log(uidToken)
+        await sendIdTokenToBackend(uidToken)
+
 
     } catch (err) {
         console.error(err);
@@ -68,15 +69,18 @@ const signInWithGoogle = async () => {
     }
 };
 
-const sendIdTokenToBackend = (idToken)=>{
-    const backendAddr = process.env.BACKENDADDR || ''
+const sendIdTokenToBackend = async (idToken)=>{
+    const backendAddr = 'http://localhost:8002'
     fetch(`${backendAddr}/firebaseVerifyToken`, {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
-            'Authorization': idToken
+            'Authorization': `Bearer ${idToken}`
         }
     })
-        .catch(err => console.error(err))
+        .catch(err => {
+            console.log('cannot send idToken to backend', err)
+        })
 }
 
 

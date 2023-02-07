@@ -6,7 +6,8 @@ import BuyingStock from "../components/BuyingStock";
 import {useLocation, useNavigate} from "react-router-dom";
 import SellingStock from "../components/SellingStock";
 
-
+const backendPort = 8002
+const backendApi =  `http://localhost:${backendPort}`
 
 
 function Investing() {
@@ -18,7 +19,7 @@ function Investing() {
 
     useEffect(() => {
         (async ()=>{
-            const res = await fetch(`/stock/candle?stockSymbol=${stockSymbol}`)
+            const res = await fetch(`${backendApi}/stock/candle?stockSymbol=${stockSymbol}`)
             const data = await res.json()
 
             if(data.status === 400){

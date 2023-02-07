@@ -8,12 +8,17 @@ const UserStockRouter = require('./routes/UserStockRouter')
 const StockRouter = require('./routes/StockRouter')
 const NewsRouter = require('./routes/NewsRouter')
 
-const port = process.env.PORT || 8001
+const port = process.env.PORT || 8002
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(cookieParser())
 app.use(sessionValidator)
+
+app.use((req, res, next)=>{
+    console.log(req.path)
+    next()
+})
 
 app.use('/userstock', UserStockRouter)
 

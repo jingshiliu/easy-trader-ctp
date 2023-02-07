@@ -4,8 +4,8 @@ import PortfolioOverview from "../components/PortfolioOverview";
 import {useEffect, useState} from "react";
 import MainAppContent from "../components/MainAppContent";
 
-// const backendPort = 8001
-const backendApi = process.env.BACKENDADDR || '' // localhost:${backendPort}
+const backendPort = 8002
+const backendApi =  `http://localhost:${backendPort}`
 
 function Home() {
     const [profileStocks, setProfileStocks] = useState([])
