@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 
 const cookieParser = require('cookie-parser')
-const {firebaseVerifyToken} = require('./Authenticator')
+const {firebaseVerifyToken, sessionValidator} = require('./Authenticator')
 
 const UserStockRouter = require('./routes/UserStockRouter')
 const StockRouter = require('./routes/StockRouter')
@@ -13,6 +13,7 @@ const port = process.env.PORT || 8001
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(cookieParser())
+app.use(sessionValidator)
 
 app.use('/userstock', UserStockRouter)
 
