@@ -6,8 +6,7 @@ import MainAppContent from "../components/MainAppContent";
 
 // const backendPort = 8001
 const userId = 1
-const backendApi = `` // localhost:${backendPort}
-
+const backendApi = process.env.BACKENDADDR || '' // localhost:${backendPort}
 
 function Home() {
     const [profileStocks, setProfileStocks] = useState([])
@@ -54,7 +53,7 @@ function Home() {
         setProfileStocks(profile.data)
     }
 
-    async function requestNews(newsType = 'general') {
+    async function requestNews() {
         const res = await fetch(`${backendApi}/news`)
         setNews((await res.json()))
     }
