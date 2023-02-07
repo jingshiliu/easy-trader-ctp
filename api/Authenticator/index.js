@@ -4,7 +4,6 @@ const crypto = require('crypto')
 const sessions = {}
 
 /**
- * should be used in sensitive routes only
  * a middleware that verifies sessionId
  * adding a userId attribute to 'req.body' if sessionId is valid
  * @param req
@@ -13,6 +12,8 @@ const sessions = {}
  * @returns {Promise<void>}
  */
 async function sessionValidator(req, res, next){
+    if(req.path === '/firebaseVerifyToken') next()
+
     const sessionId = req.cookie.sessionId
     const session = sessions[sessionId]
 
