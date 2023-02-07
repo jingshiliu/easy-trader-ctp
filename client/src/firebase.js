@@ -1,7 +1,6 @@
 //reference : https://blog.logrocket.com/user-authentication-firebase-react-apps/
 
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import {
     GoogleAuthProvider,
     getAuth,
@@ -59,16 +58,19 @@ const signInWithGoogle = async () => {
         }
 
         // send idToken to own backend server
-        return (await user.getIdToken())
+        user.getIdToken()
+            .then(sendIdTokenToBackend)
+            .catch(err => console.err(err))
 
-    } catch (err){
+    } catch (err) {
         console.error(err);
         alert(err.message);
     }
 };
 
-const sendIdTokenToBackend = (backendAddress, idToken)=>{
-    fetch(backendAddress, {
+const sendIdTokenToBackend = (idToken)=>{
+    const backendAddr = process.env.BACKENDADDR || ''
+    fetch(`${backendAddr}/firebaseVerifyToken`, {
         method: 'POST',
         headers: {
             'Authorization': idToken
