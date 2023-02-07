@@ -5,7 +5,6 @@ import {useEffect, useState} from "react";
 import MainAppContent from "../components/MainAppContent";
 
 // const backendPort = 8001
-const userId = 1
 const backendApi = process.env.BACKENDADDR || '' // localhost:${backendPort}
 
 function Home() {
@@ -42,10 +41,7 @@ function Home() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: new URLSearchParams({
-                userId: userId
-            }),
+            }
         }
         const res = await fetch(`${backendApi}/userstock/getAll`, options)
         const profile = (await res.json())
@@ -83,7 +79,7 @@ function Home() {
                     <div className="app__body__main-chart__container">
                         <PortfolioOverview stockCandles={stockCandles}/>
                     </div>
-                    <MainAppContent stockCandles={stockCandles} news={news} userId={userId}/>
+                    <MainAppContent stockCandles={stockCandles} news={news}/>
                 </div>
             </div>
         </div>

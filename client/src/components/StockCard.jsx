@@ -11,7 +11,7 @@ import {Link} from "react-router-dom";
  * @returns {JSX.Element}
  * @constructor
  */
-function StockCard({stockData, userId}) {
+function StockCard({stockData}) {
     function getCurPrice() {
         return stockData.candle[stockData.candle.length - 1]
     }
@@ -23,7 +23,6 @@ function StockCard({stockData, userId}) {
               to={{pathname: '/investing'}}
               state={{
                   stockSymbol: stockData.stockSymbol,
-                  userId: userId
               }}>
             <span>{stockData.stockSymbol}</span>
 
